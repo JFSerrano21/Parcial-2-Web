@@ -5,7 +5,7 @@ import { FotoEntity } from 'src/foto/fotoentity/fotoentity';
 @Entity()
 export class AlbumEntity {
     @PrimaryGeneratedColumn('uuid')
-    id: Long;
+    id: number;
 
     @Column()
     fechaInicio: String;

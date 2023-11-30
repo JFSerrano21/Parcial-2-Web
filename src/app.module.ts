@@ -11,6 +11,11 @@ import { Redsocialentity } from './redsocial/redsocialentity/redsocialentity';
 import { AlbumEntity } from './album/albumentity/albumentity';
 import { FotoEntity } from './foto/fotoentity/fotoentity';
 import { FotoserviceService } from './foto/fotoservice/fotoservice.service';
+import { RedsocialFotoModule } from './redsocial/redsocial-foto/redsocial-foto.module';
+import { RedsocialUsuarioModule } from './redsocial/redsocial-usuario/redsocial-usuario.module';
+import { UsuarioFotoModule } from './usuario/usuario-foto/usuario-foto.module';
+import { AlbumFotoModule } from './album/album-foto/album-foto.module';
+import { UsuarioAlbumModule } from './usuario/usuario-album/usuario-album.module';
 
 @Module({
   imports: [FotoModule   ,
@@ -32,7 +37,12 @@ import { FotoserviceService } from './foto/fotoservice/fotoservice.service';
   }),
     UsuarioModule,
     RedsocialModule,
-    AlbumModule],
+    AlbumModule,
+    RedsocialFotoModule,
+    RedsocialUsuarioModule,
+    UsuarioFotoModule,
+    AlbumFotoModule,
+    UsuarioAlbumModule],
   controllers: [AppController],
   providers: [AppService, FotoserviceService],
   
