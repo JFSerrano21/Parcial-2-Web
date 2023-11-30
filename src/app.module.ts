@@ -10,6 +10,7 @@ import { UsuarioEntity } from './usuario/usuarioentity/usuarioentity';
 import { Redsocialentity } from './redsocial/redsocialentity/redsocialentity';
 import { AlbumEntity } from './album/albumentity/albumentity';
 import { FotoEntity } from './foto/fotoentity/fotoentity';
+import { FotoserviceService } from './foto/fotoservice/fotoservice.service';
 
 @Module({
   imports: [FotoModule   ,
@@ -33,7 +34,7 @@ import { FotoEntity } from './foto/fotoentity/fotoentity';
     RedsocialModule,
     AlbumModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, FotoserviceService],
   
 })
 export class AppModule {}
