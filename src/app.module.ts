@@ -1,50 +1,47 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Album } from './album/album';
+import { Foto } from './foto/foto';
+import { RedSocial } from './red-social/red-social';
+import { Usuario } from './usuario/usuario';
+
+import { AlbumModule } from './album/album.module';
+import { FotoModule } from './foto/foto.module';
+import { RedSocialModule } from './red-social/red-social.module';
+import { UsuarioModule } from './usuario/usuario.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { FotoModule } from './foto/foto.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsuarioModule } from './usuario/usuario.module';
-import { RedsocialModule } from './redsocial/redsocial.module';
-import { AlbumModule } from './album/album.module';
-import { UsuarioEntity } from './usuario/usuarioentity/usuarioentity';
-import { Redsocialentity } from './redsocial/redsocialentity/redsocialentity';
-import { AlbumEntity } from './album/albumentity/albumentity';
-import { FotoEntity } from './foto/fotoentity/fotoentity';
-import { FotoserviceService } from './foto/fotoservice/fotoservice.service';
-import { RedsocialFotoModule } from './redsocial/redsocial-foto/redsocial-foto.module';
-import { RedsocialUsuarioModule } from './redsocial/redsocial-usuario/redsocial-usuario.module';
-import { UsuarioFotoModule } from './usuario/usuario-foto/usuario-foto.module';
-import { AlbumFotoModule } from './album/album-foto/album-foto.module';
-import { UsuarioAlbumModule } from './usuario/usuario-album/usuario-album.module';
+
+import { FotoRedSocialModule } from './foto/foto-red-social/foto-red-social.module';
+import { UsuarioRedSocialModule } from './usuario/usuario-red-social/usuario-red-social.module';
+import { FotoUsuarioModule } from './foto/foto-usuario/foto-usuario.module';
+import { FotoAlbumModule } from './foto/foto-album/foto-album.module';
+import { AlbumUsuarioModule } from './album/album-usuario/album-usuario.module';
+
 
 @Module({
-  imports: [FotoModule   ,
+  imports: [
     TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'postgres',
-    database: 'parcial2',
-    entities: [UsuarioEntity,
-      Redsocialentity,
-      AlbumEntity,
-      FotoEntity
-    ],
-    dropSchema: true,
-    synchronize: true,
-    keepConnectionAlive: true,
-  }),
-    UsuarioModule,
-    RedsocialModule,
+      type: 'postgres', 
+      host: 'localhost', 
+      port: 5432, 
+      username: 'postgres', 
+      password: 'postgres', 
+      database: 'parcial-2',
+      entities: [Album, Foto, RedSocial, Usuario],
+      synchronize: true, 
+    }),
     AlbumModule,
-    RedsocialFotoModule,
-    RedsocialUsuarioModule,
-    UsuarioFotoModule,
-    AlbumFotoModule,
-    UsuarioAlbumModule],
+    FotoModule,
+    RedSocialModule,
+    UsuarioModule,
+    FotoRedSocialModule,
+    UsuarioRedSocialModule,
+    FotoUsuarioModule,
+    FotoAlbumModule,
+    AlbumUsuarioModule,
+  ],
   controllers: [AppController],
-  providers: [AppService, FotoserviceService],
-  
+  providers: [AppService],
 })
 export class AppModule {}
